@@ -233,9 +233,7 @@ export class ConfigSet {
 
       this.logger.debug({ babelConfig: this._babelConfig }, 'normalized babel config via ts-jest option')
     }
-    if (!this._babelConfig) {
-      this._overriddenCompilerOptions.module = this.compilerModule.ModuleKind.CommonJS
-    } else {
+    if (this._babelConfig) {
       this._babelJestTransformers = importer
         .babelJest(ImportReasons.BabelJest)
         .createTransformer(this._babelConfig) as BabelJestTransformer
